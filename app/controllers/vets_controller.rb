@@ -3,6 +3,7 @@ class VetsController < ApplicationController
   # GET /vets.xml
   def index
     @vets = Vet.all
+    @title = "All Vets"
 
     respond_to do |format|
       format.html # index.html.erb

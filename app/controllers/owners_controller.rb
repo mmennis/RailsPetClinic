@@ -3,6 +3,7 @@ class OwnersController < ApplicationController
   # GET /owners.xml
   def index
     @owners = Owner.all
+    @title = "All Pet Owners"
 
     respond_to do |format|
       format.html # index.html.erb
