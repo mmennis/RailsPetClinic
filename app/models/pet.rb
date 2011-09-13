@@ -1,6 +1,7 @@
 class Pet < ActiveRecord::Base
   
   belongs_to :owner
-  has_one :pet_type
+  belongs_to :pet_type
+  has_many :visits
   
 end

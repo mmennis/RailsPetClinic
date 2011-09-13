@@ -1,4 +1,4 @@
 class PetType < ActiveRecord::Base
   
-  belongs_to :pet
+  has_one :pet
 end

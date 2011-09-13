@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913201341) do
+ActiveRecord::Schema.define(:version => 20110913213309) do
 
   create_table "owners", :force => true do |t|
     t.string   "first_name"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20110913201341) do
   create_table "vets", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "visits", :force => true do |t|
+    t.datetime "visit_date"
+    t.string   "description"
+    t.integer  "pet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
