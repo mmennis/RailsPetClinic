@@ -1,0 +1,25 @@
+<%= form_for(@vet_specialty) do |f| %>
+  <% if @vet_specialty.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vet_specialty.errors.count, "error") %> prohibited this vet_specialty from being saved:</h2>
+
+      <ul>
+      <% @vet_specialty.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vet_id %><br />
+    <%= f.text_field :vet_id %>
+  </div>
+  <div class="field">
+    <%= f.label :specialty_id %><br />
+    <%= f.text_field :specialty_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

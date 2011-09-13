@@ -1,0 +1,23 @@
+<h1>Listing pet_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pet_types.each do |pet_type| %>
+  <tr>
+    <td><%= pet_type.name %></td>
+    <td><%= link_to 'Show', pet_type %></td>
+    <td><%= link_to 'Edit', edit_pet_type_path(pet_type) %></td>
+    <td><%= link_to 'Destroy', pet_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pet type', new_pet_type_path %>

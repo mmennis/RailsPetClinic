@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  vet_id: 1
+  specialty_id: 1
+
+two:
+  vet_id: 1
+  specialty_id: 1

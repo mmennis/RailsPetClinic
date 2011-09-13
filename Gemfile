@@ -7,11 +7,10 @@ gem 'rails', '3.0.10'
 
 gem 'mysql2', '~> 0.2.11'
 
+gem 'faker', '~> 1.0.0'
+
 # Use unicorn as the web server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'

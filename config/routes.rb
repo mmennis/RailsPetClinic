@@ -1,4 +1,16 @@
 RailsPetClinic::Application.routes.draw do
+  resources :pet_types
+
+  resources :vet_specialties
+
+  resources :specialties
+
+  resources :vets
+
+  resources :pets
+
+  resources :owners
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

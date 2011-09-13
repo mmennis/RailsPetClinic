@@ -1,0 +1,25 @@
+<%= form_for(@vet) do |f| %>
+  <% if @vet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vet.errors.count, "error") %> prohibited this vet from being saved:</h2>
+
+      <ul>
+      <% @vet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
