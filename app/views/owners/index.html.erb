@@ -2,26 +2,24 @@
 
 <table>
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
+    <th>Name</th>
     <th>Address</th>
     <th>City</th>
     <th>Telephone</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Pets</th>
   </tr>
 
 <% @owners.each do |owner| %>
   <tr>
-    <td><%= owner.first_name %></td>
-    <td><%= owner.last_name %></td>
+    <td><%= link_to "#{owner.first_name} #{owner.last_name}", owner %></td>
     <td><%= owner.address %></td>
     <td><%= owner.city %></td>
     <td><%= owner.telephone %></td>
-    <td><%= link_to 'Show', owner %></td>
-    <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-    <td><%= link_to 'Destroy', owner, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+    	<% owner.pets.each do |pet| %>
+    	  <%= link_to pet.name, pet %>
+    	<% end %>
+    </td>
   </tr>
 <% end %>
 </table>

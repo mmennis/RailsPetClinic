@@ -2,20 +2,16 @@
 
 <table>
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Name</th>
+    <th>Specialties</th>
   </tr>
 
 <% @vets.each do |vet| %>
   <tr>
-    <td><%= vet.first_name %></td>
-    <td><%= vet.last_name %></td>
-    <td><%= link_to 'Show', vet %></td>
-    <td><%= link_to 'Edit', edit_vet_path(vet) %></td>
-    <td><%= link_to 'Destroy', vet, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "#{vet.first_name} #{vet.last_name}", vet %></td>
+    <td>
+    	<%= vet.specialties.collect { |s| s.name }.join(', ') %>
+    </td>
   </tr>
 <% end %>
 </table>
