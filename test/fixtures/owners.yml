@@ -1,15 +1,36 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  address: MyString
-  city: MyString
-  telephone: MyString
+  first_name: John
+  last_name: Smith
+  address: 123 Nowhere St
+  city: London
+  telephone: 123-456-7890
 
 two:
-  first_name: MyString
-  last_name: MyString
-  address: MyString
-  city: MyString
-  telephone: MyString
+  first_name: Bob
+  last_name: Jones
+  address: 234 Nowhere St
+  city: Paris
+  telephone: 234-567-8901
+
+three:
+  first_name: Frank
+  last_name: Smith
+  address: 123 Nowhere St
+  city: London
+  telephone: 123-456-7890
+  
+four:
+  first_name: John
+  last_name: Jones
+  address: 345 Nowhere St
+  city: London
+  telephone: 123-456-7890
+  
+five:
+  first_name: Fred
+  last_name: Smith
+  address: 123 Nowhere St
+  city: London
+  telephone: 123-456-7890
