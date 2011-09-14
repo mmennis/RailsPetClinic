@@ -14,6 +14,8 @@ RailsPetClinic::Application.routes.draw do
   resources :pets
 
   resources :owners
+  
+  match 'find_owners' => 'owners#find_owners', :as => :find_owners
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

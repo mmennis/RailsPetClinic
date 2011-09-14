@@ -2,7 +2,7 @@ class OwnersController < ApplicationController
   # GET /owners
   # GET /owners.xml
   def index
-    @owners = Owner.all
+    @owners = Owner.find_by_last_name params[:last_name]
     @title = "All Pet Owners"
 
     respond_to do |format|
@@ -79,6 +79,14 @@ class OwnersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(owners_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def find_owners
+    @title = "Filter owners by last name"
+    
+    respond_to do |format|
+      format.html 
     end
   end
 end
