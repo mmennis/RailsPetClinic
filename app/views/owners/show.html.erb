@@ -1,30 +1,69 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @owner.first_name %>
-</p>
+<h2>Owner Information</h2>>
 
-<p>
-  <b>Last name:</b>
-  <%= @owner.last_name %>
-</p>
+<table>
+	<tr>
+		<th>Name</th>
+		<td><b><%= @owner.first_name %> <%= @owner.last_name%></b></td>
+	</tr>
+	<tr>
+		<th>Address</th>
+		<td><%= @owner.address %></td>
+	</tr>
+	<tr>
+		<th>City</th>
+		<td><%= @owner.city%></td>
+	</tr>
+	<tr>
+		<th>Telephone</th>
+		<td><%= @owner.telephone %></td>
+	</tr>
+</table>
 
-<p>
-  <b>Address:</b>
-  <%= @owner.address %>
-</p>
+<table class="table-buttons">
+	<tr>
+		<td><%= link_to 'Edit', edit_owner_path(@owner) %></td>
+		<td><%= link_to 'Back', owners_path %></td>
+	</tr>
+</table>
 
-<p>
-  <b>City:</b>
-  <%= @owner.city %>
-</p>
-
-<p>
-  <b>Telephone:</b>
-  <%= @owner.telephone %>
-</p>
-
-
-<%= link_to 'Edit', edit_owner_path(@owner) %> |
-<%= link_to 'Back', owners_path %>
+<h2>Pets and Visits</h2>
+<% @owner.pets.each do |pet| %>
+	<table width="94%">
+		<tr>
+			<td valign="top">
+				<table>
+					<tr>
+						<th>Name</th>
+						<td><b><%= pet.name %></b></td>
+					</tr>
+					<tr>
+						<th>Birthdate</th>
+						<td><%= pet.birth_date.strftime "%m %d %Y" %></td>
+					</tr>
+					<tr>
+						<th>Type</th>
+						<td><%= pet.pet_type.name %></td>
+					</tr>
+				</table>
+			</td>
+			<td valign="top">
+				<table>
+					<tr>
+						<thead>
+							<th>Visit Date</th>
+							<th>Description</th>
+						</thead>
+					</tr>
+					<% pet.visits.each do |visit| %>
+						<tr>
+							<td><%= visit.visit_date.strftime "%m %d %Y" %></td>
+							<td><%= visit.description %></td>
+						</tr>
+					<% end %>
+				</table>
+			</td>
+		</tr>
+	</table>
+<% end %>
