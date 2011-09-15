@@ -12,4 +12,6 @@ Instructions for initializing database for testing
  * You can inspect the lib/tasks/sample_data.rake file to see how data is created and make changes.
  * The following command will create the basic data set for the testing
  `rake db:populate`
+ * The size of the data set is comfigurable - check the constants on the sample_data.rake file.
+ * These values are set high for performance and stability testing to mimic n+1 SQL query problems.
  
