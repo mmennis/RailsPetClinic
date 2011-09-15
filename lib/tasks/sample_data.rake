@@ -4,8 +4,8 @@ namespace :db do
   desc "Fill the petclinic database with sample data"
   task :populate => :environment do
     
-    OWNER_COUNT = 1000
-    VET_COUNT = 1500
+    OWNER_COUNT = 500
+    VET_COUNT = 500
     
     one_year_seconds = 365 * 24 * 3600
     ten_years_seconds = 10 * one_year_seconds
