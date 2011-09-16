@@ -15,3 +15,10 @@ Instructions for initializing database for testing
  * The size of the data set is comfigurable - check the constants on the sample_data.rake file.
  * These values are set high for performance and stability testing to mimic n+1 SQL query problems.
  
+ Running Load
+ ------------
+ * There is a sample JMeter load script in the test/load_script directory
+ * The user.properties file should be put in the bin directory of the JMeter install
+ * This version was used with nginx listening on port 8980.
+ 
+ 
