@@ -76,6 +76,7 @@ GEM
       kgio (~> 2.4)
       rack
       raindrops (~> 0.6)
+    yahoo-finance (0.0.2)
 
 PLATFORMS
   ruby
@@ -86,3 +87,4 @@ DEPENDENCIES
   newrelic_rpm
   rails (= 3.0.10)
   unicorn
+  yahoo-finance

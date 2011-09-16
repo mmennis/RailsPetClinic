@@ -1,4 +1,8 @@
 RailsPetClinic::Application.routes.draw do
+  get "stock_quotes/index"
+
+  get "stock_quotes/show"
+
   get "pages/index"
 
   resources :visits

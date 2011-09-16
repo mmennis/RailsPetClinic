@@ -1,0 +1,24 @@
+<h1>A selection of stock quotes:</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Bid</th>
+			<th>Ask</th>
+			<th>High</th>
+			<th>Low</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @stock_data.each do |stock_data| %>
+			<tr>
+				<td><%= stock_data.symbol %></td>
+				<td><%= stock_data.bid %></td>
+				<td><%= stock_data.ask %></td>
+				<td><%= stock_data.high %></td>
+				<td><%= stock_data.low %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
