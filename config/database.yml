@@ -11,8 +11,8 @@ development:
   reconnect: false
   database: RailsPetClinic_development
   pool: 5
-  username: pc
-  password: pc
+  username: root
+  password: 
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -24,8 +24,8 @@ test:
   reconnect: false
   database: RailsPetClinic_test
   pool: 5
-  username: pc
-  password: pc
+  username: root
+  password: 
   host: 127.0.0.1
 
 production:
@@ -34,6 +34,6 @@ production:
   reconnect: false
   database: RailsPetClinic_production
   pool: 5
-  username: pc
-  password: pc
+  username: root
+  password: 
   host: 127.0.0.1
