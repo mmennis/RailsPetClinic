@@ -1,4 +1,4 @@
-app_path = "/webapp/rails_pet_clinic"
+app_path = "/web_apps/rails_pet_clinic"
 
 listen 3000
 
