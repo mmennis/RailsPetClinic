@@ -1,4 +1,4 @@
-app_path = "/home/qa/source/RailsPetClinic"
+app_path = "/webapp/rails_pet_clinic"
 
 listen 3000
 
