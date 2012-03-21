@@ -10,7 +10,7 @@ worker_processes 3
 stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
 
-pid "#{app_path}/pids/unicorn.pid"
+pid "#{app_path}/tmp/pids/unicorn.pid"
 stdout_path ="/tmp/unicorn.stdout.log"
 stderr_path ="/tmp/unicorn.stderr.log"
 
