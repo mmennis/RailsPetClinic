@@ -9,7 +9,7 @@ end
 
 app_root = '/web_apps/rails_pet_clinic'
 
-directory app_root do
+directory "#{app_root}/shared" do
   recursive true
   action :create
   owner 'www-data'
@@ -20,10 +20,13 @@ end
 deploy app_root do
   repo "git://github.com/niralisse/RailsPetClinic.git"
   action :deploy
+  # no symlinks, we store production config in the repo
+  symlink_before_migrate({})
   revision 'master'
   enable_submodules true
   migrate true
-  migration_command 'bundle exec rake db:migrate'
+  # nuke everything all the time
+  migration_command 'bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:populate'
   environment "RAILS_ENV" => "production"
   restart_command 'monit restart unicorn'
   user 'www-data'

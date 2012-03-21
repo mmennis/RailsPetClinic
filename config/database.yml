@@ -12,7 +12,7 @@ development:
   database: RailsPetClinic_development
   pool: 5
   username: root
-  password: 
+  password:
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +25,7 @@ test:
   database: RailsPetClinic_test
   pool: 5
   username: root
-  password: 
+  password:
   host: 127.0.0.1
 
 production:
@@ -35,5 +35,5 @@ production:
   database: RailsPetClinic_production
   pool: 5
   username: root
-  password: 
+  password: xOAqOWD2OpSI1B5SHhku
   host: 127.0.0.1
