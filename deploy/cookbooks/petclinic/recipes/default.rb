@@ -10,6 +10,7 @@ end
 app_root = '/web_apps/rails_pet_clinic'
 
 directory app_root do
+  recursive true
   action :create
   owner 'www-data'
   group 'www-data'
@@ -38,7 +39,7 @@ end
 
 template '/etc/init.d/unicorn' do
   source 'unicorn.init.erb'
-  variables {:app_root => app_root}
+  variables(:app_root => app_root)
 end
 
 service 'unicorn' do
@@ -46,14 +47,7 @@ service 'unicorn' do
   supports :restart => true
 end
 
-nginx_site do
-  name 'petclinic'
-end
+nginx_site 'petclinic'
 
-monitrc do
-  name 'nginx'
-end
-
-monitrc do
-  name 'unicorn'
-end
+monitrc  'nginx'
+monitrc  'unicorn'
