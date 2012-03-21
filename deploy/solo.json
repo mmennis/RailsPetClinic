@@ -1,3 +1,4 @@
 {
+    "mysql": {"server_repl_password": "xOAqOWD2OpSI1B5SHhku", "server_root_password": "xOAqOWD2OpSI1B5SHhku", "server_debian_password": "xOAqOWD2OpSI1B5SHhku"},
     "run_list": [ "recipe[petclinic::default]" ]
 }
