@@ -1,0 +1,9 @@
+[submodule "deploy/cookbooks/monit"]
+	path = deploy/cookbooks/monit
+	url = git://github.com/apsoto/monit.git
+[submodule "deploy/cookbooks/mysql"]
+	path = deploy/cookbooks/mysql
+	url = http://github.com/opscode-cookbooks/mysql
+[submodule "deploy/cookbooks/nginx"]
+	path = deploy/cookbooks/nginx
+	url = http://github.com/opscode-cookbooks/nginx
