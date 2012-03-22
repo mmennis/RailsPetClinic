@@ -14,11 +14,18 @@ Instructions for initializing database for testing
  `rake db:populate`
  * The size of the data set is comfigurable - check the constants on the sample_data.rake file.
  * These values are set high for performance and stability testing to mimic n+1 SQL query problems.
- 
+
+Running on a server
+-------------------
+Chef solo cookbooks are provided to ease setup on a new server to demonstrate load. You should be able to bootstrap the entire set of requirements quickly.
+
+* Check out the code onto your server, then run `git submodule update --init` to load the remote cookbooks.
+* Then cd to deploy/, and run install.sh as root. This should install chef, ruby, and other prereqs, then install the whole shebang to run the pet clinic app, including mysql, nginx, and monit.
+
+
  Running Load
  ------------
  * There is a sample JMeter load script in the test/load_script directory
  * The user.properties file should be put in the bin directory of the JMeter install
  * This version was used with nginx listening on port 8980.
- 
- 
+
