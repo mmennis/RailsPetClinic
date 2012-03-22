@@ -2,6 +2,6 @@
 
 check process unicorn
   with pidfile /web_apps/rails_pet_clinic/pids/unicorn.pid
-  start program = "unicorn -env production --daemonize --config-file config/unicorn.rb"
-  stop program = "/bin/bash -c 'kill -QUIT `cat /web_apps/rails_pet_clinic/pids/unicorn.pid`'"
+  start program = "/etc/init.d unicorn start"
+  stop program = "/etc/init.d unicorn stop"
   group unicorn

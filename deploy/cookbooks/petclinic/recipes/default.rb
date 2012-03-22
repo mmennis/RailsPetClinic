@@ -22,7 +22,7 @@ end
 
 # rebuild everything every time git syncs
 execute "dbsetup" do
-  command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
+  command "bundle install --deployment --without development test; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
   cwd app_root
   environment('RAILS_ENV' => 'production')
   group 'www-data'

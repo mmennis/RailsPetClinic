@@ -8,7 +8,7 @@ set -e
 APP_ROOT=<%= @app_root %>
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 ENV=production
-CMD="unicorn_rails -D -E $ENV -c <%= @app_root %>/config/unicorn.rb"
+CMD="bundle exec unicorn_rails -D -E $ENV -c <%= @app_root %>/config/unicorn.rb"
 
 old_pid="$PID.oldbin"
 
