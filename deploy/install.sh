@@ -2,7 +2,7 @@
 
 # Run this as root on an ubuntu-like machine to get chef-solo installed
 
-chef_binary=`which chef-solo`
+chef_binary=which 'chef-solo'
 
 # Are we on a vanilla system?
 if ! test -f "$chef_binary"; then
@@ -12,7 +12,7 @@ if ! test -f "$chef_binary"; then
     apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade &&
 
     # Install Ruby and Chef
-    aptitude install -y ruby1.9.1 ruby1.9.1-dev make &&
+    aptitude install -y ruby ruby-dev make &&
     sudo gem install --no-rdoc --no-ri chef --version 0.10.0
 fi &&
 
