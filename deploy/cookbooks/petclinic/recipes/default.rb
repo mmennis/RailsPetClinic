@@ -11,7 +11,7 @@ gem_package 'bundler'
 
 app_root = '/web_apps/rails_pet_clinic'
 
-directory "#{app_root}/shared" do
+directory app_root do
   recursive true
   action :create
   owner 'www-data'
@@ -19,20 +19,23 @@ directory "#{app_root}/shared" do
   mode '0755'
 end
 
-deploy app_root do
-  repo "git://github.com/niralisse/RailsPetClinic.git"
-  action :deploy
-  # no symlinks, we store production config in the repo
-  symlink_before_migrate({})
+git app_root do
+  repository "git://github.com/niralisse/RailsPetClinic.git"
+  action :sync
   revision 'master'
   enable_submodules true
-  migrate true
-  # nuke everything all the time
-  migration_command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
-  environment "RAILS_ENV" => "production"
-  restart_command 'monit restart unicorn'
   user 'www-data'
   group 'www-data'
+  notifies :run, resources(:execute => "database setup")
+end
+
+execute "database setup" do
+  command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
+  cwd app_root
+  environment('RAILS_ENV' => 'production')
+  group 'www-data'
+  user 'www-data'
+  action :nothing
 end
 
 template "#{node[:nginx][:dir]}/sites-available/petclinic" do
