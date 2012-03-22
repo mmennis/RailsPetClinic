@@ -38,6 +38,15 @@ git app_root do
   notifies :run, resources(:execute => "database setup")
 end
 
+['tmp', 'tmp/pids', 'log'].each do |dir|
+  directory File.join(app_root, dir) do
+    action :create_if_missing
+    owner 'www-data'
+    group 'www-data'
+    mode '0755'
+  end
+end
+
 template '/etc/init.d/unicorn' do
   source 'unicorn.init.erb'
   variables(:app_root => app_root)
