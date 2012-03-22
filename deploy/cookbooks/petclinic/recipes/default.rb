@@ -19,6 +19,7 @@ directory app_root do
   mode '0755'
 end
 
+# rebuild everything every time git syncs
 execute "dbsetup" do
   command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
   cwd app_root
@@ -28,6 +29,7 @@ execute "dbsetup" do
   action :nothing
 end
 
+# not using deploy since we don't need any of its magic
 git app_root do
   repository "git://github.com/niralisse/RailsPetClinic.git"
   action :sync
@@ -38,6 +40,7 @@ git app_root do
   notifies :run, 'execute[dbsetup]', :immediately
 end
 
+# ...however we don't get shared folders without deploy, so we have to make them
 ['tmp', 'tmp/pids', 'log'].each do |dir|
   directory File.join(app_root, dir) do
     action :create
@@ -47,12 +50,20 @@ end
   end
 end
 
+# unicorn service file
 template '/etc/init.d/unicorn' do
   source 'unicorn.init.erb'
   variables(:app_root => app_root)
   mode '0744'
 end
 
+# register unicorn service file
+service 'unicorn' do
+  action [:enable, :start]
+  supports :restart => true
+end
+
+# petclinic nginx vhost
 template "#{node[:nginx][:dir]}/sites-available/petclinic" do
   source 'petclinic.erb'
   owner "root"
@@ -61,12 +72,9 @@ template "#{node[:nginx][:dir]}/sites-available/petclinic" do
   variables(:app_root => app_root)
 end
 
-service 'unicorn' do
-  action [:enable, :start]
-  supports :restart => true
-end
-
+# enable the above
 nginx_site 'petclinic'
 
+# add monit love, see templates/default/*.conf.erb
 monitrc  'nginx'
 monitrc  'unicorn'
