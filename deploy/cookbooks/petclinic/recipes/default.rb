@@ -19,6 +19,15 @@ directory app_root do
   mode '0755'
 end
 
+execute "database setup" do
+  command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
+  cwd app_root
+  environment('RAILS_ENV' => 'production')
+  group 'www-data'
+  user 'www-data'
+  action :nothing
+end
+
 git app_root do
   repository "git://github.com/niralisse/RailsPetClinic.git"
   action :sync
@@ -27,15 +36,6 @@ git app_root do
   user 'www-data'
   group 'www-data'
   notifies :run, resources(:execute => "database setup")
-end
-
-execute "database setup" do
-  command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
-  cwd app_root
-  environment('RAILS_ENV' => 'production')
-  group 'www-data'
-  user 'www-data'
-  action :nothing
 end
 
 template "#{node[:nginx][:dir]}/sites-available/petclinic" do
