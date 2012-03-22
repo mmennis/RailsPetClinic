@@ -3,7 +3,7 @@ include_recipe "mysql::server"
 include_recipe "nginx::default"
 include_recipe "monit::default"
 
-%w(build-essential zlib1g-dev libssl-dev libreadline5-dev git-core libpcre3-dev ruby-dev nginx).each do |prereq|
+%w(build-essential zlib1g-dev libssl-dev git-core libpcre3-dev ruby-dev nginx).each do |prereq|
   package prereq
 end
 

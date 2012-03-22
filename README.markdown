@@ -19,7 +19,7 @@ Running on a server
 -------------------
 Chef solo cookbooks are provided to ease setup on a new server to demonstrate load. You should be able to bootstrap the entire set of requirements quickly.
 
-* Check out the code onto your server, then run `git submodule update --init` to load the remote cookbooks.
+* Check out the code onto your server with `git clone --recursive git://github.com/niralisse/RailsPetClinic.git`
 * Then cd to deploy/, and run install.sh as root. This should install chef, ruby, and other prereqs, then install the whole shebang to run the pet clinic app, including mysql, nginx, and monit. When the install run completes you'll have another checkout in `/web_apps/rails_pet_clinic`, the actual site will be hosted from there.
 
 

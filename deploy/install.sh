@@ -2,7 +2,7 @@
 
 # Run this as root on an ubuntu-like machine to get chef-solo set up
 
-chef_binary=`which chef-solo`
+chef_binary='/var/lib/gems/1.8/bin'
 
 # Are we on a vanilla system?
 if ! test -f "$chef_binary"; then

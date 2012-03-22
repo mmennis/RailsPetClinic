@@ -6,3 +6,4 @@ version          "0.1"
 depends           'mysql'
 depends           'nginx'
 depends           'monit'
+supports          'ubuntu', '= 11.10'
