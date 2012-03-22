@@ -19,7 +19,7 @@ directory app_root do
   mode '0755'
 end
 
-execute "database setup" do
+execute "dbsetup" do
   command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
   cwd app_root
   environment('RAILS_ENV' => 'production')
@@ -35,7 +35,7 @@ git app_root do
   enable_submodules true
   user 'www-data'
   group 'www-data'
-  notifies :run, resources(:execute => "database setup")
+  notifies :sync, resources(:execute => "dbsetup")
 end
 
 ['tmp', 'tmp/pids', 'log'].each do |dir|
