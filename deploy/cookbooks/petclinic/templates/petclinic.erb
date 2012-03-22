@@ -15,7 +15,7 @@ upstream rails-pet-clinic {
 server {
   listen       80;
 
-  root /web_apps/rails_pet_clinic/public;
+  root <%= @app_root %>/public;
   access_log /var/log/nginx/rails_pet_clinic-access.log;
   error_log /var/log/nginx/rails_pet_clinic-error.log;
   rewrite_log on;

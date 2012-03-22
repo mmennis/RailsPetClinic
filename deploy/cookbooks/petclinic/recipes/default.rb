@@ -43,6 +43,7 @@ template "#{node[:nginx][:dir]}/sites-available/petclinic" do
   owner "root"
   group "root"
   mode 0644
+  variables(:app_root => app_root)
 end
 
 template '/etc/init.d/unicorn' do
