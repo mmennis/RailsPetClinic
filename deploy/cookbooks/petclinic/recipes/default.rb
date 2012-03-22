@@ -40,7 +40,7 @@ end
 
 ['tmp', 'tmp/pids', 'log'].each do |dir|
   directory File.join(app_root, dir) do
-    action :create_if_missing
+    action :create
     owner 'www-data'
     group 'www-data'
     mode '0755'
