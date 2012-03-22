@@ -41,13 +41,14 @@ end
 template '/etc/init.d/unicorn' do
   source 'unicorn.init.erb'
   variables(:app_root => app_root)
+  mode '0744'
 end
 
 template "#{node[:nginx][:dir]}/sites-available/petclinic" do
   source 'petclinic.erb'
   owner "root"
   group "root"
-  mode 0644
+  mode '0644'
   variables(:app_root => app_root)
 end
 
