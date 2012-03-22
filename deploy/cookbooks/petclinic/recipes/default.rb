@@ -35,7 +35,7 @@ git app_root do
   enable_submodules true
   user 'www-data'
   group 'www-data'
-  notifies :sync, resources(:execute => "dbsetup")
+  notifies :run, 'execute[dbsetup]', :immediately
 end
 
 ['tmp', 'tmp/pids', 'log'].each do |dir|
