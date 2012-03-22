@@ -28,7 +28,7 @@ deploy app_root do
   enable_submodules true
   migrate true
   # nuke everything all the time
-  migration_command 'bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate'
+  migration_command "bundle install; bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate && bundle exec rake db:populate"
   environment "RAILS_ENV" => "production"
   restart_command 'monit restart unicorn'
   user 'www-data'

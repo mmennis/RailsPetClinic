@@ -36,4 +36,4 @@ production:
   pool: 5
   username: root
   password: xOAqOWD2OpSI1B5SHhku
-  host: 127.0.0.1
+  host: localhost
