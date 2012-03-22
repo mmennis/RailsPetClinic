@@ -31,7 +31,7 @@ end
 git app_root do
   repository "git://github.com/niralisse/RailsPetClinic.git"
   action :sync
-  revision 'master'
+  revision 'chef-solo'
   enable_submodules true
   user 'www-data'
   group 'www-data'
