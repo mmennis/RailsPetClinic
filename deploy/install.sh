@@ -4,6 +4,8 @@
 
 chef_binary='/var/lib/gems/1.8/bin'
 
+# newrelic_key = $1
+
 # Are we on a vanilla system?
 if ! test -f "$chef_binary"; then
     # Upgrade headlessly (this is only safe-ish on vanilla systems)

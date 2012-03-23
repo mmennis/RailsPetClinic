@@ -1,4 +1,6 @@
 {
     "mysql": {"server_repl_password": "xOAqOWD2OpSI1B5SHhku", "server_root_password": "xOAqOWD2OpSI1B5SHhku", "server_debian_password": "xOAqOWD2OpSI1B5SHhku"},
+    "newrelic_api_key" : "YOUR_NEWRELIC_API_KEY",
+    "newrelic_app_name" : "Rails Pet Clinic",
     "run_list": [ "recipe[petclinic::default]" ]
 }

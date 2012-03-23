@@ -41,6 +41,14 @@ git app_root do
   notifies :run, 'execute[dbsetup]', :immediately
 end
 
+template File.join(app_root, 'config', 'newrelic.yml') do
+  source 'newrelic.yml.erb'
+  variables({:newrelic_api_key => node['newrelic_api_key'], :newrelic_app_name => node['newrelic_app_name']})
+  owner "www-data"
+  group "www-data"
+  mode '0644'
+end
+
 # ...however we don't get shared folders without deploy, so we have to make them
 ['tmp', 'tmp/pids', 'log'].each do |dir|
   directory File.join(app_root, dir) do
