@@ -36,7 +36,7 @@ http {
   <% end %>
 
   server_names_hash_bucket_size <%= node[:nginx][:server_names_hash_bucket_size] %>;
-  types_hash_max_size: 1024;
+  types_hash_max_size 8192;
 
   include <%= node[:nginx][:dir] %>/conf.d/*.conf;
   include <%= node[:nginx][:dir] %>/sites-enabled/*;
