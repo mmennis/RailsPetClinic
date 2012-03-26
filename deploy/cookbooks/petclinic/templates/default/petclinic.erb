@@ -1,0 +1,58 @@
+# File: /etc/nginx/sites-available/rails_pet_clinic
+# easiest if you put it in /etc/nginx and symlink to sites-enabled/rails_pet_clinic
+
+# Mostly yanked from:
+# http://bit.ly/nginx-unicorn-setup
+# and http://tomkersten.com/articles/nginx-unicorn-rvm-server-setup/
+
+upstream rails_pet_clinic {
+  # fail_timeout=0 means we always retry an upstream even if it failed
+  # to return a good HTTP response (in case the Unicorn master nukes a
+  # single worker for timing out).
+  server unix:/tmp/rails_pet_clinic.socket fail_timeout=0;
+}
+
+server {
+  listen       80;
+
+  root <%= @app_root %>/public;
+  access_log /var/log/nginx/rails_pet_clinic-access.log;
+  error_log /var/log/nginx/rails_pet_clinic-error.log;
+  rewrite_log on;
+
+  location / {
+    proxy_pass http://rails_pet_clinic;
+    proxy_redirect     off;
+
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+
+    client_max_body_size       10m;
+    client_body_buffer_size    128k;
+
+    proxy_connect_timeout      90;
+    proxy_send_timeout         90;
+    proxy_read_timeout         90;
+
+    proxy_buffer_size          4k;
+    proxy_buffers              4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+
+    index  index.html index.htm;
+  }
+
+  # if the request is for a static resource, nginx should serve it directly
+  # and add a far future expires header to it, making the browser
+  # cache the resource and navigate faster over the website
+  location ~ ^/(images|javascripts|stylesheets|system)/  {
+    root /web_apps/rails_pet_clinic/public;
+    expires max;
+    break;
+  }
+
+  # redirect server error pages to the static page /50x.html
+  #
+  error_page   500 502 503 504  /50x.html;
+}
