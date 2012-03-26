@@ -41,12 +41,16 @@ Vagrant::Config.run do |config|
   #
    config.vm.provision :chef_solo do |chef|
      chef.cookbooks_path = "deploy/cookbooks"
+     chef.add_recipe "nrsysmond"
      chef.add_recipe "petclinic"
 
      # See also deploy/solo.json
-     chef.json = { "mysql" => {"server_repl_password" => "xOAqOWD2OpSI1B5SHhku",
-                               "server_root_password" => "xOAqOWD2OpSI1B5SHhku",
-                               "server_debian_password" => "xOAqOWD2OpSI1B5SHhku"}
+     chef.json = { :mysql => {:server_repl_password => "xOAqOWD2OpSI1B5SHhku",
+                               :server_root_password => "xOAqOWD2OpSI1B5SHhku",
+                               :server_debian_password => "xOAqOWD2OpSI1B5SHhku"},
+                   :newrelic => {:license_key => 'YOUR_NR_LICENSE_KEY',
+                                  :app_name => "Rails Pet Clinic",
+                                  :enabled => false} # disable the server agent by default, get a key
       }
   end
 end
