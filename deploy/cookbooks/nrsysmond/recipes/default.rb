@@ -19,9 +19,9 @@
 
 case node[:platform]
 when "ubuntu", "debian"
-  include_recipe "newrelic::debian"
+  include_recipe "nrsysmond::debian"
 when "redhat", "centos", "fedora"
-  include_recipe "newrelic::redhat"
+  include_recipe "nrsysmond::redhat"
 end
 
 directory "/var/run/newrelic" do
