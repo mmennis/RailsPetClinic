@@ -43,7 +43,7 @@ end
 
 template File.join(app_root, 'config', 'newrelic.yml') do
   source 'newrelic.yml.erb'
-  variables({:newrelic_api_key => node['newrelic_api_key'], :newrelic_app_name => node['newrelic_app_name']})
+  variables({:newrelic_api_key => node['newrelic']['license_key'], :newrelic_app_name => node['newrelic']['app_name']})
   owner "www-data"
   group "www-data"
   mode '0644'
