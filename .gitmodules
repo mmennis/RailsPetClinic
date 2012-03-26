@@ -1,0 +1,12 @@
+[submodule "deploy/cookbooks/monit"]
+	path = deploy/cookbooks/monit
+	url = git://github.com/apsoto/monit.git
+[submodule "deploy/cookbooks/mysql"]
+	path = deploy/cookbooks/mysql
+	url = http://github.com/opscode-cookbooks/mysql
+[submodule "deploy/cookbooks/openssl"]
+	path = deploy/cookbooks/openssl
+	url = http://github.com/opscode-cookbooks/openssl
+[submodule "deploy/cookbooks/apt"]
+	path = deploy/cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt
